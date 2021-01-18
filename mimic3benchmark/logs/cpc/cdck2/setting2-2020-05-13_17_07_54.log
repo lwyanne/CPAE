@@ -1,0 +1,33 @@
+2020-05-13 17:07:54,748 - ===> Random split train, validation and eval dataset
+2020-05-13 17:07:57,637 - -----n_flat_features_per_frame=22
+2020-05-13 17:07:58,623 - ### Model summary below###
+ CDCK2(
+  (convs): ModuleList(
+    (0): Conv2d(16, 32, kernel_size=(2, 2), stride=(1, 1), padding=(2, 2), groups=16, bias=False)
+    (1): Conv2d(32, 64, kernel_size=(2, 2), stride=(1, 1), padding=(2, 2), bias=False)
+    (2): Conv2d(64, 256, kernel_size=(2, 2), stride=(1, 1), padding=(2, 2), bias=False)
+    (3): Conv2d(256, 64, kernel_size=(2, 2), stride=(1, 1), padding=(2, 2), bias=False)
+    (4): Conv2d(64, 24, kernel_size=(2, 2), stride=(1, 1), padding=(2, 2), bias=False)
+  )
+  (bns): ModuleList(
+    (0): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): BatchNorm2d(256, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (maxpooling): MaxPool2d(kernel_size=2, stride=1, padding=0, dilation=1, ceil_mode=False)
+  (ReLU): ReLU(inplace=True)
+  (softmax): Softmax(dim=None)
+  (lsoftmax): LogSoftmax()
+  (linear): Linear(in_features=22, out_features=16, bias=True)
+  (gru): GRU(16, 16, batch_first=True)
+  (Wk): ModuleList(
+    (0): Linear(in_features=16, out_features=16, bias=True)
+    (1): Linear(in_features=16, out_features=16, bias=True)
+    (2): Linear(in_features=16, out_features=16, bias=True)
+  )
+)
+
+2020-05-13 17:07:58,623 - ===> Model total parameter: 149232
+

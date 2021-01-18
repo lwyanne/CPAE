@@ -1,0 +1,7 @@
+2020-05-15 19:32:34,453 - Starting to generate intermediate data
+
+2020-05-15 19:34:09,454 - Getting training intermediate vectors done. saved in /home/shuying/Documents/cpcSurvival/logs/imp/cdck3
+2020-05-15 19:34:39,681 - Getting validation intermediate vectors done. saved in /home/shuying/Documents/cpcSurvival/logs/imp/cdck3
+2020-05-15 19:35:09,672 - Getting test intermediate vectors done. saved in /home/shuying/Documents/cpcSurvival/logs/imp/cdck3
+2020-05-15 19:35:09,674 - creating log:setting1-predict_mlp-1000_500_100
+

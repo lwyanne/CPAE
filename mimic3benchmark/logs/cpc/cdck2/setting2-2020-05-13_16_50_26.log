@@ -1,0 +1,198 @@
+2020-05-13 16:50:26,232 - ===> Random split train, validation and eval dataset
+2020-05-13 16:50:29,199 - -----n_flat_features_per_frame=30
+2020-05-13 16:50:30,109 - ### Model summary below###
+ CDCK2(
+  (convs): ModuleList(
+    (0): Conv2d(12, 24, kernel_size=(2, 2), stride=(1, 1), padding=(2, 2), groups=12, bias=False)
+    (1): Conv2d(24, 128, kernel_size=(2, 2), stride=(1, 1), padding=(2, 2), bias=False)
+    (2): Conv2d(128, 512, kernel_size=(2, 2), stride=(1, 1), padding=(2, 2), bias=False)
+    (3): Conv2d(512, 128, kernel_size=(2, 2), stride=(1, 1), padding=(2, 2), bias=False)
+    (4): Conv2d(128, 24, kernel_size=(2, 2), stride=(1, 1), padding=(2, 2), bias=False)
+  )
+  (bns): ModuleList(
+    (0): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (1): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): BatchNorm2d(512, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): BatchNorm2d(128, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (maxpooling): MaxPool2d(kernel_size=2, stride=1, padding=0, dilation=1, ceil_mode=False)
+  (ReLU): ReLU(inplace=True)
+  (softmax): Softmax(dim=None)
+  (lsoftmax): LogSoftmax()
+  (linear): Linear(in_features=30, out_features=16, bias=True)
+  (gru): GRU(16, 16, batch_first=True)
+  (Wk): ModuleList(
+    (0): Linear(in_features=16, out_features=16, bias=True)
+    (1): Linear(in_features=16, out_features=16, bias=True)
+    (2): Linear(in_features=16, out_features=16, bias=True)
+    (3): Linear(in_features=16, out_features=16, bias=True)
+  )
+)
+
+2020-05-13 16:50:30,109 - ===> Model total parameter: 553808
+
+2020-05-13 16:50:31,633 - Train Epoch: 1 [0/17295 (0%)]	lr:5.00000	Accuracy: 0.2500	Loss: 4.230492
+2020-05-13 16:50:33,473 - Train Epoch: 1 [360/17295 (2%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.428203
+2020-05-13 16:50:35,281 - Train Epoch: 1 [720/17295 (4%)]	lr:5.00000	Accuracy: 0.1667	Loss: 5.313528
+2020-05-13 16:50:37,151 - Train Epoch: 1 [1080/17295 (6%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.701021
+2020-05-13 16:50:39,042 - Train Epoch: 1 [1440/17295 (8%)]	lr:5.00000	Accuracy: 0.1667	Loss: 6.310438
+2020-05-13 16:50:40,931 - Train Epoch: 1 [1800/17295 (10%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.099460
+2020-05-13 16:50:42,894 - Train Epoch: 1 [2160/17295 (12%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.531880
+2020-05-13 16:50:44,840 - Train Epoch: 1 [2520/17295 (15%)]	lr:5.00000	Accuracy: 0.1667	Loss: 5.185516
+2020-05-13 16:50:46,766 - Train Epoch: 1 [2880/17295 (17%)]	lr:5.00000	Accuracy: 0.0833	Loss: 5.489495
+2020-05-13 16:50:48,661 - Train Epoch: 1 [3240/17295 (19%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.025684
+2020-05-13 16:50:50,511 - Train Epoch: 1 [3600/17295 (21%)]	lr:5.00000	Accuracy: 0.1667	Loss: 5.361050
+2020-05-13 16:50:52,432 - Train Epoch: 1 [3960/17295 (23%)]	lr:5.00000	Accuracy: 0.0000	Loss: 5.333869
+2020-05-13 16:50:54,350 - Train Epoch: 1 [4320/17295 (25%)]	lr:5.00000	Accuracy: 0.0833	Loss: 5.027982
+2020-05-13 16:50:56,320 - Train Epoch: 1 [4680/17295 (27%)]	lr:5.00000	Accuracy: 0.1667	Loss: 4.635313
+2020-05-13 16:50:58,178 - Train Epoch: 1 [5040/17295 (29%)]	lr:5.00000	Accuracy: 0.0000	Loss: 5.061015
+2020-05-13 16:51:00,117 - Train Epoch: 1 [5400/17295 (31%)]	lr:5.00000	Accuracy: 0.0000	Loss: 5.510669
+2020-05-13 16:51:01,986 - Train Epoch: 1 [5760/17295 (33%)]	lr:5.00000	Accuracy: 0.0000	Loss: 6.199303
+2020-05-13 16:51:03,884 - Train Epoch: 1 [6120/17295 (35%)]	lr:5.00000	Accuracy: 0.0833	Loss: 3.885253
+2020-05-13 16:51:05,806 - Train Epoch: 1 [6480/17295 (37%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.082351
+2020-05-13 16:51:07,701 - Train Epoch: 1 [6840/17295 (40%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.576652
+2020-05-13 16:51:09,636 - Train Epoch: 1 [7200/17295 (42%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.657882
+2020-05-13 16:51:11,517 - Train Epoch: 1 [7560/17295 (44%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.497174
+2020-05-13 16:51:13,409 - Train Epoch: 1 [7920/17295 (46%)]	lr:5.00000	Accuracy: 0.1667	Loss: 5.114011
+2020-05-13 16:51:15,302 - Train Epoch: 1 [8280/17295 (48%)]	lr:5.00000	Accuracy: 0.0833	Loss: 5.659450
+2020-05-13 16:51:17,220 - Train Epoch: 1 [8640/17295 (50%)]	lr:5.00000	Accuracy: 0.0833	Loss: 5.484684
+2020-05-13 16:51:19,195 - Train Epoch: 1 [9000/17295 (52%)]	lr:5.00000	Accuracy: 0.0000	Loss: 5.930560
+2020-05-13 16:51:21,065 - Train Epoch: 1 [9360/17295 (54%)]	lr:5.00000	Accuracy: 0.1667	Loss: 4.037740
+2020-05-13 16:51:22,990 - Train Epoch: 1 [9720/17295 (56%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.203130
+2020-05-13 16:51:24,930 - Train Epoch: 1 [10080/17295 (58%)]	lr:5.00000	Accuracy: 0.0000	Loss: 5.664734
+2020-05-13 16:51:26,842 - Train Epoch: 1 [10440/17295 (60%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.871499
+2020-05-13 16:51:28,720 - Train Epoch: 1 [10800/17295 (62%)]	lr:5.00000	Accuracy: 0.1667	Loss: 4.974761
+2020-05-13 16:51:30,586 - Train Epoch: 1 [11160/17295 (64%)]	lr:5.00000	Accuracy: 0.1667	Loss: 5.214599
+2020-05-13 16:51:32,472 - Train Epoch: 1 [11520/17295 (67%)]	lr:5.00000	Accuracy: 0.0833	Loss: 5.084217
+2020-05-13 16:51:34,347 - Train Epoch: 1 [11880/17295 (69%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.756988
+2020-05-13 16:51:36,200 - Train Epoch: 1 [12240/17295 (71%)]	lr:5.00000	Accuracy: 0.1667	Loss: 4.243089
+2020-05-13 16:51:38,091 - Train Epoch: 1 [12600/17295 (73%)]	lr:5.00000	Accuracy: 0.1667	Loss: 5.156465
+2020-05-13 16:51:39,988 - Train Epoch: 1 [12960/17295 (75%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.121557
+2020-05-13 16:51:41,908 - Train Epoch: 1 [13320/17295 (77%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.498935
+2020-05-13 16:51:43,802 - Train Epoch: 1 [13680/17295 (79%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.310994
+2020-05-13 16:51:45,791 - Train Epoch: 1 [14040/17295 (81%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.848746
+2020-05-13 16:51:47,665 - Train Epoch: 1 [14400/17295 (83%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.578611
+2020-05-13 16:51:49,533 - Train Epoch: 1 [14760/17295 (85%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.520227
+2020-05-13 16:51:51,419 - Train Epoch: 1 [15120/17295 (87%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.778732
+2020-05-13 16:51:53,265 - Train Epoch: 1 [15480/17295 (89%)]	lr:5.00000	Accuracy: 0.0833	Loss: 5.068339
+2020-05-13 16:51:55,129 - Train Epoch: 1 [15840/17295 (92%)]	lr:5.00000	Accuracy: 0.2500	Loss: 5.394432
+2020-05-13 16:51:56,988 - Train Epoch: 1 [16200/17295 (94%)]	lr:5.00000	Accuracy: 0.1667	Loss: 5.732929
+2020-05-13 16:51:58,851 - Train Epoch: 1 [16560/17295 (96%)]	lr:5.00000	Accuracy: 0.0000	Loss: 5.128919
+2020-05-13 16:52:00,691 - Train Epoch: 1 [16920/17295 (98%)]	lr:5.00000	Accuracy: 0.0833	Loss: 5.373553
+2020-05-13 16:52:02,508 - Train Epoch: 1 [17280/17295 (100%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.383311
+2020-05-13 16:52:03,093 - Starting Validation
+2020-05-13 16:52:08,562 - -------------------------------
+Validation Epoch: 1 	Accuracy: 143.0000	Loss: 15038.473633
+------------------
+2020-05-13 16:52:08,572 - Snapshot saved to /media/DISK1/cpcSurvival/logs/cpc/cdck2/setting2-2020-05-13_16_50_26-model_best.pth
+
+2020-05-13 16:52:08,573 - Parameters saved as 'args1.json'! !!!!!!!!
+2020-05-13 16:52:08,573 - #### End epoch 1/200, elapsed time: 98.46346966398414
+2020-05-13 16:52:10,115 - Train Epoch: 2 [0/17295 (0%)]	lr:5.00000	Accuracy: 0.0000	Loss: 5.186666
+2020-05-13 16:52:12,164 - Train Epoch: 2 [360/17295 (2%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.971052
+2020-05-13 16:52:13,991 - Train Epoch: 2 [720/17295 (4%)]	lr:5.00000	Accuracy: 0.0833	Loss: 5.177428
+2020-05-13 16:52:15,888 - Train Epoch: 2 [1080/17295 (6%)]	lr:5.00000	Accuracy: 0.0833	Loss: 6.333591
+2020-05-13 16:52:17,764 - Train Epoch: 2 [1440/17295 (8%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.856134
+2020-05-13 16:52:19,705 - Train Epoch: 2 [1800/17295 (10%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.335136
+2020-05-13 16:52:21,667 - Train Epoch: 2 [2160/17295 (12%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.732848
+2020-05-13 16:52:23,763 - Train Epoch: 2 [2520/17295 (15%)]	lr:5.00000	Accuracy: 0.0833	Loss: 5.330428
+2020-05-13 16:52:25,650 - Train Epoch: 2 [2880/17295 (17%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.292858
+2020-05-13 16:52:27,547 - Train Epoch: 2 [3240/17295 (19%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.385309
+2020-05-13 16:52:29,449 - Train Epoch: 2 [3600/17295 (21%)]	lr:5.00000	Accuracy: 0.0000	Loss: 7.179574
+2020-05-13 16:52:31,324 - Train Epoch: 2 [3960/17295 (23%)]	lr:5.00000	Accuracy: 0.0000	Loss: 5.057634
+2020-05-13 16:52:33,228 - Train Epoch: 2 [4320/17295 (25%)]	lr:5.00000	Accuracy: 0.1667	Loss: 4.511486
+2020-05-13 16:52:35,158 - Train Epoch: 2 [4680/17295 (27%)]	lr:5.00000	Accuracy: 0.0833	Loss: 5.266967
+2020-05-13 16:52:37,130 - Train Epoch: 2 [5040/17295 (29%)]	lr:5.00000	Accuracy: 0.0000	Loss: 6.096414
+2020-05-13 16:52:39,001 - Train Epoch: 2 [5400/17295 (31%)]	lr:5.00000	Accuracy: 0.1667	Loss: 4.787612
+2020-05-13 16:52:40,895 - Train Epoch: 2 [5760/17295 (33%)]	lr:5.00000	Accuracy: 0.1667	Loss: 4.619457
+2020-05-13 16:52:42,745 - Train Epoch: 2 [6120/17295 (35%)]	lr:5.00000	Accuracy: 0.1667	Loss: 4.243941
+2020-05-13 16:52:44,646 - Train Epoch: 2 [6480/17295 (37%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.624822
+2020-05-13 16:52:46,534 - Train Epoch: 2 [6840/17295 (40%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.469841
+2020-05-13 16:52:48,400 - Train Epoch: 2 [7200/17295 (42%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.495962
+2020-05-13 16:52:50,261 - Train Epoch: 2 [7560/17295 (44%)]	lr:5.00000	Accuracy: 0.0000	Loss: 3.931867
+2020-05-13 16:52:52,119 - Train Epoch: 2 [7920/17295 (46%)]	lr:5.00000	Accuracy: 0.0000	Loss: 3.838204
+2020-05-13 16:52:53,992 - Train Epoch: 2 [8280/17295 (48%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.455575
+2020-05-13 16:52:55,892 - Train Epoch: 2 [8640/17295 (50%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.455990
+2020-05-13 16:52:57,808 - Train Epoch: 2 [9000/17295 (52%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.275464
+2020-05-13 16:52:59,654 - Train Epoch: 2 [9360/17295 (54%)]	lr:5.00000	Accuracy: 0.0000	Loss: 5.721417
+2020-05-13 16:53:01,497 - Train Epoch: 2 [9720/17295 (56%)]	lr:5.00000	Accuracy: 0.0000	Loss: 7.138427
+2020-05-13 16:53:03,371 - Train Epoch: 2 [10080/17295 (58%)]	lr:5.00000	Accuracy: 0.0000	Loss: 5.924079
+2020-05-13 16:53:05,253 - Train Epoch: 2 [10440/17295 (60%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.283176
+2020-05-13 16:53:07,210 - Train Epoch: 2 [10800/17295 (62%)]	lr:5.00000	Accuracy: 0.1667	Loss: 5.606361
+2020-05-13 16:53:09,119 - Train Epoch: 2 [11160/17295 (64%)]	lr:5.00000	Accuracy: 0.0833	Loss: 5.268901
+2020-05-13 16:53:10,983 - Train Epoch: 2 [11520/17295 (67%)]	lr:5.00000	Accuracy: 0.0000	Loss: 5.786174
+2020-05-13 16:53:12,825 - Train Epoch: 2 [11880/17295 (69%)]	lr:5.00000	Accuracy: 0.1667	Loss: 5.701702
+2020-05-13 16:53:14,691 - Train Epoch: 2 [12240/17295 (71%)]	lr:5.00000	Accuracy: 0.2500	Loss: 7.224556
+2020-05-13 16:53:16,517 - Train Epoch: 2 [12600/17295 (73%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.470530
+2020-05-13 16:53:18,461 - Train Epoch: 2 [12960/17295 (75%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.669702
+2020-05-13 16:53:20,414 - Train Epoch: 2 [13320/17295 (77%)]	lr:5.00000	Accuracy: 0.0000	Loss: 5.256046
+2020-05-13 16:53:22,371 - Train Epoch: 2 [13680/17295 (79%)]	lr:5.00000	Accuracy: 0.2500	Loss: 6.069580
+2020-05-13 16:53:24,204 - Train Epoch: 2 [14040/17295 (81%)]	lr:5.00000	Accuracy: 0.0833	Loss: 5.871895
+2020-05-13 16:53:26,057 - Train Epoch: 2 [14400/17295 (83%)]	lr:5.00000	Accuracy: 0.0000	Loss: 6.839840
+2020-05-13 16:53:27,983 - Train Epoch: 2 [14760/17295 (85%)]	lr:5.00000	Accuracy: 0.1667	Loss: 5.058633
+2020-05-13 16:53:29,870 - Train Epoch: 2 [15120/17295 (87%)]	lr:5.00000	Accuracy: 0.1667	Loss: 5.993668
+2020-05-13 16:53:31,754 - Train Epoch: 2 [15480/17295 (89%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.014720
+2020-05-13 16:53:33,632 - Train Epoch: 2 [15840/17295 (92%)]	lr:5.00000	Accuracy: 0.0833	Loss: 3.857900
+2020-05-13 16:53:35,531 - Train Epoch: 2 [16200/17295 (94%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.574534
+2020-05-13 16:53:37,325 - Train Epoch: 2 [16560/17295 (96%)]	lr:5.00000	Accuracy: 0.1667	Loss: 6.016164
+2020-05-13 16:53:39,129 - Train Epoch: 2 [16920/17295 (98%)]	lr:5.00000	Accuracy: 0.1667	Loss: 5.079060
+2020-05-13 16:53:40,887 - Train Epoch: 2 [17280/17295 (100%)]	lr:5.00000	Accuracy: 0.0833	Loss: 5.661752
+2020-05-13 16:53:41,461 - Starting Validation
+2020-05-13 16:53:46,838 - -------------------------------
+Validation Epoch: 2 	Accuracy: 156.0000	Loss: 13915.766602
+------------------
+2020-05-13 16:53:46,849 - Snapshot saved to /media/DISK1/cpcSurvival/logs/cpc/cdck2/setting2-2020-05-13_16_50_26-model_best.pth
+
+2020-05-13 16:53:46,850 - Parameters saved as 'args1.json'! !!!!!!!!
+2020-05-13 16:53:46,850 - #### End epoch 2/200, elapsed time: 98.2774210870266
+2020-05-13 16:53:48,433 - Train Epoch: 3 [0/17295 (0%)]	lr:5.00000	Accuracy: 0.1667	Loss: 5.324240
+2020-05-13 16:53:50,258 - Train Epoch: 3 [360/17295 (2%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.951168
+2020-05-13 16:53:52,071 - Train Epoch: 3 [720/17295 (4%)]	lr:5.00000	Accuracy: 0.0833	Loss: 5.448315
+2020-05-13 16:53:53,921 - Train Epoch: 3 [1080/17295 (6%)]	lr:5.00000	Accuracy: 0.0000	Loss: 5.601089
+2020-05-13 16:53:55,717 - Train Epoch: 3 [1440/17295 (8%)]	lr:5.00000	Accuracy: 0.0833	Loss: 7.444250
+2020-05-13 16:53:57,553 - Train Epoch: 3 [1800/17295 (10%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.176340
+2020-05-13 16:53:59,426 - Train Epoch: 3 [2160/17295 (12%)]	lr:5.00000	Accuracy: 0.1667	Loss: 6.196810
+2020-05-13 16:54:01,322 - Train Epoch: 3 [2520/17295 (15%)]	lr:5.00000	Accuracy: 0.1667	Loss: 5.170789
+2020-05-13 16:54:03,230 - Train Epoch: 3 [2880/17295 (17%)]	lr:5.00000	Accuracy: 0.0833	Loss: 5.191313
+2020-05-13 16:54:05,083 - Train Epoch: 3 [3240/17295 (19%)]	lr:5.00000	Accuracy: 0.0000	Loss: 5.816163
+2020-05-13 16:54:06,894 - Train Epoch: 3 [3600/17295 (21%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.471662
+2020-05-13 16:54:08,747 - Train Epoch: 3 [3960/17295 (23%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.850643
+2020-05-13 16:54:10,604 - Train Epoch: 3 [4320/17295 (25%)]	lr:5.00000	Accuracy: 0.1667	Loss: 6.248026
+2020-05-13 16:54:12,499 - Train Epoch: 3 [4680/17295 (27%)]	lr:5.00000	Accuracy: 0.0000	Loss: 6.144315
+2020-05-13 16:54:14,391 - Train Epoch: 3 [5040/17295 (29%)]	lr:5.00000	Accuracy: 0.0833	Loss: 5.294145
+2020-05-13 16:54:16,235 - Train Epoch: 3 [5400/17295 (31%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.462232
+2020-05-13 16:54:18,093 - Train Epoch: 3 [5760/17295 (33%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.072447
+2020-05-13 16:54:19,945 - Train Epoch: 3 [6120/17295 (35%)]	lr:5.00000	Accuracy: 0.1667	Loss: 5.065943
+2020-05-13 16:54:21,803 - Train Epoch: 3 [6480/17295 (37%)]	lr:5.00000	Accuracy: 0.3333	Loss: 5.312793
+2020-05-13 16:54:23,686 - Train Epoch: 3 [6840/17295 (40%)]	lr:5.00000	Accuracy: 0.0000	Loss: 5.932486
+2020-05-13 16:54:25,507 - Train Epoch: 3 [7200/17295 (42%)]	lr:5.00000	Accuracy: 0.1667	Loss: 5.957038
+2020-05-13 16:54:27,393 - Train Epoch: 3 [7560/17295 (44%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.702432
+2020-05-13 16:54:29,258 - Train Epoch: 3 [7920/17295 (46%)]	lr:5.00000	Accuracy: 0.1667	Loss: 4.728000
+2020-05-13 16:54:31,092 - Train Epoch: 3 [8280/17295 (48%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.458063
+2020-05-13 16:54:32,956 - Train Epoch: 3 [8640/17295 (50%)]	lr:5.00000	Accuracy: 0.1667	Loss: 4.831615
+2020-05-13 16:54:34,785 - Train Epoch: 3 [9000/17295 (52%)]	lr:5.00000	Accuracy: 0.0833	Loss: 6.904644
+2020-05-13 16:54:36,674 - Train Epoch: 3 [9360/17295 (54%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.019931
+2020-05-13 16:54:38,587 - Train Epoch: 3 [9720/17295 (56%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.674248
+2020-05-13 16:54:40,469 - Train Epoch: 3 [10080/17295 (58%)]	lr:5.00000	Accuracy: 0.0833	Loss: 5.315753
+2020-05-13 16:54:42,346 - Train Epoch: 3 [10440/17295 (60%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.486372
+2020-05-13 16:54:44,202 - Train Epoch: 3 [10800/17295 (62%)]	lr:5.00000	Accuracy: 0.0000	Loss: 5.351173
+2020-05-13 16:54:46,166 - Train Epoch: 3 [11160/17295 (64%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.011164
+2020-05-13 16:54:48,084 - Train Epoch: 3 [11520/17295 (67%)]	lr:5.00000	Accuracy: 0.0000	Loss: 5.362369
+2020-05-13 16:54:50,068 - Train Epoch: 3 [11880/17295 (69%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.685184
+2020-05-13 16:54:52,000 - Train Epoch: 3 [12240/17295 (71%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.990465
+2020-05-13 16:54:53,914 - Train Epoch: 3 [12600/17295 (73%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.752704
+2020-05-13 16:54:55,856 - Train Epoch: 3 [12960/17295 (75%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.369629
+2020-05-13 16:54:57,843 - Train Epoch: 3 [13320/17295 (77%)]	lr:5.00000	Accuracy: 0.3333	Loss: 5.401632
+2020-05-13 16:54:59,796 - Train Epoch: 3 [13680/17295 (79%)]	lr:5.00000	Accuracy: 0.0833	Loss: 6.062611
+2020-05-13 16:55:01,755 - Train Epoch: 3 [14040/17295 (81%)]	lr:5.00000	Accuracy: 0.0833	Loss: 5.083225
+2020-05-13 16:55:03,640 - Train Epoch: 3 [14400/17295 (83%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.757905
+2020-05-13 16:55:05,530 - Train Epoch: 3 [14760/17295 (85%)]	lr:5.00000	Accuracy: 0.0000	Loss: 5.305193
+2020-05-13 16:55:07,385 - Train Epoch: 3 [15120/17295 (87%)]	lr:5.00000	Accuracy: 0.0000	Loss: 6.333364
+2020-05-13 16:55:09,276 - Train Epoch: 3 [15480/17295 (89%)]	lr:5.00000	Accuracy: 0.0833	Loss: 6.520738
+2020-05-13 16:55:11,118 - Train Epoch: 3 [15840/17295 (92%)]	lr:5.00000	Accuracy: 0.1667	Loss: 5.004776
+2020-05-13 16:55:13,004 - Train Epoch: 3 [16200/17295 (94%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.406822
+2020-05-13 16:55:14,889 - Train Epoch: 3 [16560/17295 (96%)]	lr:5.00000	Accuracy: 0.0000	Loss: 7.676418
+2020-05-13 16:55:16,746 - Train Epoch: 3 [16920/17295 (98%)]	lr:5.00000	Accuracy: 0.0000	Loss: 4.686033
+2020-05-13 16:55:18,512 - Train Epoch: 3 [17280/17295 (100%)]	lr:5.00000	Accuracy: 0.0833	Loss: 4.801970
+2020-05-13 16:55:19,113 - Starting Validation

@@ -1,0 +1,41 @@
+2020-05-13 18:17:16,125 - ===> Random split train, validation and eval dataset
+2020-05-13 18:17:17,374 - ### Model summary below###
+ CDCK2(
+  (convs): ModuleList(
+    (0): Conv2d(12, 12, kernel_size=(2, 2), stride=(1, 1), padding=(2, 2), groups=12, bias=False)
+    (1): Conv2d(12, 48, kernel_size=(2, 2), stride=(1, 1), padding=(2, 2), groups=12, bias=False)
+    (2): Conv2d(48, 96, kernel_size=(2, 2), stride=(1, 1), padding=(2, 2), groups=12, bias=False)
+    (3): Conv2d(96, 48, kernel_size=(2, 2), stride=(1, 1), padding=(2, 2), groups=12, bias=False)
+    (4): Conv2d(48, 12, kernel_size=(2, 2), stride=(1, 1), padding=(2, 2), groups=12, bias=False)
+  )
+  (bns): ModuleList(
+    (0): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (1): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (2): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (3): BatchNorm2d(48, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+    (4): BatchNorm2d(12, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  )
+  (maxpooling): MaxPool2d(kernel_size=2, stride=1, padding=0, dilation=1, ceil_mode=False)
+  (ReLU): ReLU(inplace=True)
+  (softmax): Softmax(dim=None)
+  (lsoftmax): LogSoftmax()
+)
+
+2020-05-13 18:17:17,374 - ===> Model total parameter: 3936
+
+2020-05-13 18:17:17,532 - 
+
+Resume from checkpoint: /media/DISK1/cpcSurvival/logs/cpc/cdck2/setting5-2020-05-13_18_03_01-model_best.pth
+
+
+2020-05-13 18:17:18,934 - Train Epoch: 4 [0/17295 (0%)]	lr:1.00000	Accuracy: 0.1667	Loss: 3.549049
+2020-05-13 18:17:20,746 - Train Epoch: 4 [360/17295 (2%)]	lr:1.00000	Accuracy: 0.0833	Loss: 2.959862
+2020-05-13 18:17:22,620 - Train Epoch: 4 [720/17295 (4%)]	lr:1.00000	Accuracy: 0.0833	Loss: 2.916739
+2020-05-13 18:17:24,510 - Train Epoch: 4 [1080/17295 (6%)]	lr:1.00000	Accuracy: 0.0000	Loss: 3.546382
+2020-05-13 18:17:26,461 - Train Epoch: 4 [1440/17295 (8%)]	lr:1.00000	Accuracy: 0.0000	Loss: 2.946936
+2020-05-13 18:17:28,418 - Train Epoch: 4 [1800/17295 (10%)]	lr:1.00000	Accuracy: 0.0000	Loss: 2.936150
+2020-05-13 18:17:30,415 - Train Epoch: 4 [2160/17295 (12%)]	lr:1.00000	Accuracy: 0.1667	Loss: 2.504242
+2020-05-13 18:17:32,355 - Train Epoch: 4 [2520/17295 (15%)]	lr:1.00000	Accuracy: 0.1667	Loss: 2.576357
+2020-05-13 18:17:34,272 - Train Epoch: 4 [2880/17295 (17%)]	lr:1.00000	Accuracy: 0.0833	Loss: 3.200695
+2020-05-13 18:17:36,201 - Train Epoch: 4 [3240/17295 (19%)]	lr:1.00000	Accuracy: 0.1667	Loss: 2.809117
+2020-05-13 18:17:38,187 - Train Epoch: 4 [3600/17295 (21%)]	lr:1.00000	Accuracy: 0.1667	Loss: 2.560782
