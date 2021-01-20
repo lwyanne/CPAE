@@ -58,9 +58,9 @@ We put the major scripts in the folder `scripts`.
 e.g. 
 ```json
 {
-    "script_dir": '/home/CPAE/',
-    "data_dir": '/home/CPAE/data',
-    "logging_dir": '/home/CPAE/logs'
+    "script_dir": "/home/CPAE/",
+    "data_dir": "/home/CPAE/data",
+    "logging_dir": "/home/CPAE/logs"
   }
 ```
 2. To pretrain a model:
