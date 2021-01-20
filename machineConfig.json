@@ -1,0 +1,5 @@
+{
+    "script_dir": 'the path to the code',
+    "data_dir": 'the path to the data',
+    "logging_dir": 'the path to the logs directory'
+  }
