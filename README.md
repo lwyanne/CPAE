@@ -20,11 +20,10 @@
     python -m mimic3benchmark.scripts.create_in_hospital_mortality data/root/ data/in-hospital-mortality/
     python -m mimic3benchmark.scripts.create_length_of_stay data/root/ data/length-of-stay/
     ```
-    > The default setting used by [3.episode extraction](https://github.com/YerevaNN/mimic3-benchmarks/blob/master/mimic3benchmark/scripts/extract_episodes_from_subjects.py) applied a strong selection of feature left for later analysis.   --seed 1 
-    > We provide an new API to allow a more relax feature selection. Slosling save your list of `ITEMID` into a txt file with `--seed 1 \t` selength-of-stayto the script via `--variables_to_
+    > The default setting used by [3.episode extraction](https://github.com/YerevaNN/mimic3-benchmarks/blob/master/mimic3benchmark/scripts/extract_episodes_from_subjects.py) applied a strong selection of feature left for later analysis.  
+    > We provide an new API to allow a more relax feature selection. Slosling save your list of `ITEMID` into a txt file with `\t` selength-of-stayto the script via `--variables_to_keep`
     
-    ```seed number (used to sample subset) and the ini-file (possible choises are in /home/logs/los/FineTune for Length-of-Stay and /home/logs/imp/FineTune/ for In-hospital mortality.). The scripts will directly load models from the ini-file and all other needed parameters.
-    Note that you need to specify the keep`.
+ - An optional argument at step 3   
     ```python
     # [optional] 3 sepearte episodes while keeping ITEM of interests 
     python -m mimic3benchmark.scripts.extract_episodes_from_subjects data/root/ --variables_to_keep {abs path}/My_desire_ITEM.txt     
@@ -47,8 +46,23 @@ We used fastai to do the downstream prediction tasks.
 ### Different settings of the networks
 To enable different settings (different hyper-parameters and other parameters for training) easily used and recorded automatically, we have a folder `logs`. In the `logs`, write a setting as `setting1.ini` /`setting2.ini`, then run the script in the 'scripts' folder with this setting. 
 
-### functions and models 
-We put the functions and models in the `models` folder.
+### functions  
+We put the functions and the codes of models in the `models` folder.
+
+To see the code for each model in paper, please refer to the following dict:
+```
+Model      class name         which file
+AE_l       AE_LSTM            networkSwitch.py
+CAE_l      CAE_LSTM           networkSwitch.py
+CPC_l      CPAELSTM44         networkSwitch.py
+BaseCPAE_l CPAELSTM44         networkSwitch.py
+AtCPAE_l   CPAELSTM44_AT      networkSwitch.py
+AE_c       AE2                networks.py
+CAE_c      CAE2               networks.py
+CPC_c      CPAE1              networks.py
+BaseCPAE_c CPAE1              networks.py
+AtCPAE_c   CPAE_AT            networks.py
+```
 
 ### scripts
 We put the major scripts in the folder `scripts`.

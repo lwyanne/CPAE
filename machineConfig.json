@@ -1,5 +1,5 @@
 {
-    "script_dir": 'the path to the code',
-    "data_dir": 'the path to the data',
-    "logging_dir": 'the path to the logs directory'
+    "script_dir": "/home/shuying/CPAE/",
+    "data_dir": "/home/shuying/cpcSurvival/data",
+    "logging_dir": "/home/shuying/CPAE/logs"
   }
