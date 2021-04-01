@@ -1,0 +1,91 @@
+2021-03-28 11:22:57,398 - ===> use benchmark strategy to split train, validation and eval dataset
+2021-03-28 11:22:58,700 - ### Model summary below###
+ CPAELSTM44_AT(
+  (lstm1): LSTM(76, 12, batch_first=True)
+  (lstm2): LSTM(12, 12, batch_first=True)
+  (lstm3): LSTM(12, 12, batch_first=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+  (softmax): Softmax(dim=0)
+  (lsoftmax): LogSoftmax()
+  (fcs): Sequential(
+    (0): Linear(in_features=12, out_features=12, bias=True)
+    (1): ReLU(inplace=True)
+    (2): Linear(in_features=12, out_features=12, bias=True)
+  )
+  (lstm4): LSTM(12, 76, batch_first=True)
+  (att1): Linear(in_features=12, out_features=12, bias=True)
+  (att2): Linear(in_features=12, out_features=12, bias=True)
+  (W_pred): Linear(in_features=12, out_features=12, bias=True)
+)
+
+2021-03-28 11:22:58,700 - ===> Model total parameter: 34956
+
+2021-03-28 11:22:58,700 - {'data_split': 'benchmark', 'batch_size': 128, 'mode': 0, 'dim': 12, 'bn': False, 'dropout': 0.3, 'task': 'ihm', 'learning_rate': 0.15, 'epochs': 1000, 'seed': 1, 'log_interval': 30, 'num_workers': 30, 'gru_out': 12, 'optimizer': 'ScheduledOptim(optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), betas=(0.9, 0.98), eps=1e-09, weight_decay=1e-4, amsgrad=True),n_warmup_steps=20)', 'setting_name': 'dim12_out12_lr_0.15_bs128_future_sym_flat', 'run_name': 'dim12_out12_lr_0.15_bs128_future_sym_flat-2021-03-28_11_22_57', 'model_type': 'CPAELSTM44_AT', 'resume': False, 'model_best': 'dim12_out12_lr_0.15_bs128_future_sym_flat-2021-03-28_10_22_01-model_best.pth', 'save_every': 100, 'lambda': [1, 1, 1, 3], 'time_step': 5, 'sym': True, 'flat_attention': True, 'top_path': '/home/shuying/CPAE/', 'scr_data_path': '/home/shuying/cpcSurvival/data', 'logging_dir': '/home/shuying/CPAE/logs/cpc/CPAELSTM44_AT', 'ini_file': '/home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim12_out12_lr_0.15_bs128_future_sym_flat.ini', 'pred_mode': 'future', 't_range': (0.5, 0.7)}
+2021-03-28 11:22:58,700 - 
+ --------------------------- epoch 1 ------------------------- 
+
+2021-03-28 11:22:58,700 - weights are [1, 1, 1, 3]
+2021-03-28 11:23:06,268 - 	 25.16627 0.00099
+2021-03-28 11:23:45,312 - 	 22.11441 0.00198
+2021-03-28 11:23:50,109 - 
+ ---------------------- mean loss : 25.19505  ---------------------- 
+
+2021-03-28 11:23:50,109 - Starting Validation
+2021-03-28 11:24:02,939 - 
+                     ------- validation -------            
+
+2021-03-28 11:24:02,939 - 	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+2021-03-28 11:24:02,939 - 	 4.1338  	 0.1805  	 0.0907 	 0.4285
+2021-03-28 11:24:02,939 - -------------------------------
+Validation Epoch: 1 	Accuracy: 52.0000	Loss: 569.081894
+------------------
+2021-03-28 11:24:02,946 - Snapshot saved to /home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim12_out12_lr_0.15_bs128_future_sym_flat-2021-03-28_11_22_57-model_best.pth
+
+2021-03-28 11:24:02,946 - Best model updated in 'dim12_out12_lr_0.15_bs128_future_sym_flat.ini'! !!!!!!!!!
+2021-03-28 11:24:02,950 - Snapshot saved to /home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim12_out12_lr_0.15_bs128_future_sym_flat-2021-03-28_11_22_57-model_best.pth
+
+2021-03-28 11:24:02,950 - model got improved for this run, but did not surpass previous though, please take changes of hyper parameters into consideration
+2021-03-28 11:24:02,950 - #### End epoch 1/1000, elapsed time: 64.24955804925412
+2021-03-28 11:24:02,950 - 
+ --------------------------- epoch 2 ------------------------- 
+
+2021-03-28 11:24:02,950 - weights are [1, 1, 1, 3]
+2021-03-28 11:24:09,526 - 	 21.52208 0.00296
+2021-03-28 11:24:50,239 - 	 21.45573 0.00395
+2021-03-28 11:24:55,242 - 
+ ---------------------- mean loss : 22.65140  ---------------------- 
+
+2021-03-28 11:24:55,242 - Starting Validation
+2021-03-28 11:25:07,818 - 
+                     ------- validation -------            
+
+2021-03-28 11:25:07,818 - 	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+2021-03-28 11:25:07,818 - 	 4.1239  	 0.1547  	 0.0595 	 0.3945
+2021-03-28 11:25:07,818 - -------------------------------
+Validation Epoch: 2 	Accuracy: 52.0000	Loss: 563.732328
+------------------
+2021-03-28 11:25:07,818 - #### End epoch 2/1000, elapsed time: 64.86804499104619
+2021-03-28 11:25:07,818 - 
+ --------------------------- epoch 3 ------------------------- 
+
+2021-03-28 11:25:07,818 - weights are [1, 1, 1, 3]
+2021-03-28 11:25:15,628 - 	 21.44097 0.00494
+2021-03-28 11:25:55,637 - 	 21.43056 0.00593
+2021-03-28 11:26:00,602 - 
+ ---------------------- mean loss : 22.51098  ---------------------- 
+
+2021-03-28 11:26:00,602 - Starting Validation
+2021-03-28 11:26:13,375 - 
+                     ------- validation -------            
+
+2021-03-28 11:26:13,376 - 	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+2021-03-28 11:26:13,376 - 	 4.1225  	 0.1447  	 0.0305 	 0.3853
+2021-03-28 11:26:13,376 - -------------------------------
+Validation Epoch: 3 	Accuracy: 52.0000	Loss: 561.313054
+------------------
+2021-03-28 11:26:13,376 - #### End epoch 3/1000, elapsed time: 65.55783415772021
+2021-03-28 11:26:13,376 - 
+ --------------------------- epoch 4 ------------------------- 
+
+2021-03-28 11:26:13,376 - weights are [1, 1, 1, 3]
+2021-03-28 11:26:19,927 - 	 21.82571 0.00692

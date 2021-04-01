@@ -1,0 +1,171 @@
+2021-03-28 10:14:59,249 - ===> use benchmark strategy to split train, validation and eval dataset
+2021-03-28 10:15:00,649 - ### Model summary below###
+ CPAELSTM44_AT(
+  (lstm1): LSTM(76, 12, batch_first=True)
+  (lstm2): LSTM(12, 12, batch_first=True)
+  (lstm3): LSTM(12, 12, batch_first=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+  (softmax): Softmax(dim=0)
+  (lsoftmax): LogSoftmax()
+  (fcs): Sequential(
+    (0): Linear(in_features=12, out_features=12, bias=True)
+    (1): ReLU(inplace=True)
+    (2): Linear(in_features=12, out_features=12, bias=True)
+  )
+  (lstm4): LSTM(12, 76, batch_first=True)
+  (att1): Linear(in_features=12, out_features=12, bias=True)
+  (att2): Linear(in_features=12, out_features=12, bias=True)
+  (W_pred): Linear(in_features=12, out_features=12, bias=True)
+)
+
+2021-03-28 10:15:00,649 - ===> Model total parameter: 34956
+
+2021-03-28 10:15:00,649 - {'data_split': 'benchmark', 'batch_size': 128, 'mode': 0, 'dim': 12, 'bn': False, 'dropout': 0.3, 'task': 'ihm', 'learning_rate': 0.15, 'epochs': 1000, 'seed': 1, 'log_interval': 30, 'num_workers': 30, 'gru_out': 12, 'optimizer': 'ScheduledOptim(optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), betas=(0.9, 0.98), eps=1e-09, weight_decay=1e-4, amsgrad=True),n_warmup_steps=20)', 'setting_name': 'dim12_out12_lr_0.15_bs128_future_sym', 'run_name': 'dim12_out12_lr_0.15_bs128_future_sym-2021-03-28_10_14_59', 'model_type': 'CPAELSTM44_AT', 'resume': False, 'model_best': 'dim12_out12_lr_0.15_bs128_future_sym_flat-2021-03-28_10_04_31-model_best.pth', 'save_every': 100, 'lambda': [1, 1, 1, 3], 'time_step': 5, 'sym': True, 'flat_attention': False, 'top_path': '/home/shuying/CPAE/', 'scr_data_path': '/home/shuying/cpcSurvival/data', 'logging_dir': '/home/shuying/CPAE/logs/cpc/CPAELSTM44_AT', 'ini_file': '/home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim12_out12_lr_0.15_bs128_future_sym.ini', 'pred_mode': 'future', 't_range': (0.5, 0.7)}
+2021-03-28 10:15:00,649 - 
+ --------------------------- epoch 1 ------------------------- 
+
+2021-03-28 10:15:00,649 - weights are [1, 1, 1, 3]
+2021-03-28 10:15:06,011 - 	 25.18737 0.00099
+2021-03-28 10:16:25,614 - 	 23.00394 0.00198
+2021-03-28 10:16:38,201 - 
+ ---------------------- mean loss : 25.53928  ---------------------- 
+
+2021-03-28 10:16:38,202 - Starting Validation
+2021-03-28 10:16:54,076 - 
+                     ------- validation -------            
+
+2021-03-28 10:16:54,076 - 	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+2021-03-28 10:16:54,076 - 	 4.1786  	 0.1827  	 0.0922 	 0.4324
+2021-03-28 10:16:54,076 - -------------------------------
+Validation Epoch: 1 	Accuracy: 54.0000	Loss: 575.242857
+------------------
+2021-03-28 10:16:54,081 - Snapshot saved to /home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim12_out12_lr_0.15_bs128_future_sym-2021-03-28_10_14_59-model_best.pth
+
+2021-03-28 10:16:54,081 - Best model updated in 'dim12_out12_lr_0.15_bs128_future_sym.ini'! !!!!!!!!!
+2021-03-28 10:16:54,085 - Snapshot saved to /home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim12_out12_lr_0.15_bs128_future_sym-2021-03-28_10_14_59-model_best.pth
+
+2021-03-28 10:16:54,086 - model got improved for this run, but did not surpass previous though, please take changes of hyper parameters into consideration
+2021-03-28 10:16:54,086 - #### End epoch 1/1000, elapsed time: 113.43665049783885
+2021-03-28 10:16:54,086 - 
+ --------------------------- epoch 2 ------------------------- 
+
+2021-03-28 10:16:54,086 - weights are [1, 1, 1, 3]
+2021-03-28 10:17:02,964 - 	 21.59108 0.00296
+2021-03-28 10:18:21,140 - 	 19.00531 0.00395
+2021-03-28 10:18:33,025 - 
+ ---------------------- mean loss : 20.93811  ---------------------- 
+
+2021-03-28 10:18:33,025 - Starting Validation
+2021-03-28 10:18:48,883 - 
+                     ------- validation -------            
+
+2021-03-28 10:18:48,884 - 	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+2021-03-28 10:18:48,884 - 	 3.5853  	 0.1678  	 0.0828 	 0.4169
+2021-03-28 10:18:48,884 - -------------------------------
+Validation Epoch: 2 	Accuracy: 209.0000	Loss: 496.438977
+------------------
+2021-03-28 10:18:48,890 - Snapshot saved to /home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim12_out12_lr_0.15_bs128_future_sym-2021-03-28_10_14_59-model_best.pth
+
+2021-03-28 10:18:48,890 - Best model updated in 'dim12_out12_lr_0.15_bs128_future_sym.ini'! !!!!!!!!!
+2021-03-28 10:18:48,900 - Snapshot saved to /home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim12_out12_lr_0.15_bs128_future_sym-2021-03-28_10_14_59-model_best.pth
+
+2021-03-28 10:18:48,900 - model got improved for this run, but did not surpass previous though, please take changes of hyper parameters into consideration
+2021-03-28 10:18:48,900 - #### End epoch 2/1000, elapsed time: 114.81406799703836
+2021-03-28 10:18:48,900 - 
+ --------------------------- epoch 3 ------------------------- 
+
+2021-03-28 10:18:48,900 - weights are [1, 1, 1, 3]
+2021-03-28 10:18:57,002 - 	 19.14371 0.00494
+2021-03-28 10:20:14,275 - 	 22.26668 0.00593
+2021-03-28 10:20:25,618 - 
+ ---------------------- mean loss : 19.47764  ---------------------- 
+
+2021-03-28 10:20:25,619 - Starting Validation
+2021-03-28 10:20:44,190 - 
+                     ------- validation -------            
+
+2021-03-28 10:20:44,190 - 	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+2021-03-28 10:20:44,190 - 	 3.2965  	 0.1571  	 0.0593 	 0.4112
+2021-03-28 10:20:44,190 - -------------------------------
+Validation Epoch: 3 	Accuracy: 264.0000	Loss: 457.099949
+------------------
+2021-03-28 10:20:44,195 - Snapshot saved to /home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim12_out12_lr_0.15_bs128_future_sym-2021-03-28_10_14_59-model_best.pth
+
+2021-03-28 10:20:44,196 - Best model updated in 'dim12_out12_lr_0.15_bs128_future_sym.ini'! !!!!!!!!!
+2021-03-28 10:20:44,207 - Snapshot saved to /home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim12_out12_lr_0.15_bs128_future_sym-2021-03-28_10_14_59-model_best.pth
+
+2021-03-28 10:20:44,208 - model got improved for this run, but did not surpass previous though, please take changes of hyper parameters into consideration
+2021-03-28 10:20:44,208 - #### End epoch 3/1000, elapsed time: 115.30791176389903
+2021-03-28 10:20:44,208 - 
+ --------------------------- epoch 4 ------------------------- 
+
+2021-03-28 10:20:44,208 - weights are [1, 1, 1, 3]
+2021-03-28 10:20:49,377 - 	 16.85905 0.00692
+2021-03-28 10:22:15,828 - 	 17.54057 0.00791
+2021-03-28 10:22:31,282 - 
+ ---------------------- mean loss : 18.10864  ---------------------- 
+
+2021-03-28 10:22:31,283 - Starting Validation
+2021-03-28 10:22:52,050 - 
+                     ------- validation -------            
+
+2021-03-28 10:22:52,051 - 	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+2021-03-28 10:22:52,051 - 	 3.1139  	 0.1528  	 0.0384 	 0.4111
+2021-03-28 10:22:52,051 - -------------------------------
+Validation Epoch: 4 	Accuracy: 328.0000	Loss: 432.150183
+------------------
+2021-03-28 10:22:52,058 - Snapshot saved to /home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim12_out12_lr_0.15_bs128_future_sym-2021-03-28_10_14_59-model_best.pth
+
+2021-03-28 10:22:52,058 - Best model updated in 'dim12_out12_lr_0.15_bs128_future_sym.ini'! !!!!!!!!!
+2021-03-28 10:22:52,070 - Snapshot saved to /home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim12_out12_lr_0.15_bs128_future_sym-2021-03-28_10_14_59-model_best.pth
+
+2021-03-28 10:22:52,070 - model got improved for this run, but did not surpass previous though, please take changes of hyper parameters into consideration
+2021-03-28 10:22:52,070 - #### End epoch 4/1000, elapsed time: 127.86256469087675
+2021-03-28 10:22:52,071 - 
+ --------------------------- epoch 5 ------------------------- 
+
+2021-03-28 10:22:52,071 - weights are [1, 1, 1, 3]
+2021-03-28 10:23:01,649 - 	 16.86178 0.00889
+2021-03-28 10:24:48,894 - 	 17.42360 0.00988
+2021-03-28 10:25:02,322 - 
+ ---------------------- mean loss : 17.16862  ---------------------- 
+
+2021-03-28 10:25:02,322 - Starting Validation
+2021-03-28 10:25:26,633 - 
+                     ------- validation -------            
+
+2021-03-28 10:25:26,633 - 	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+2021-03-28 10:25:26,634 - 	 3.0575  	 0.1498  	 0.0337 	 0.4052
+2021-03-28 10:25:26,634 - -------------------------------
+Validation Epoch: 5 	Accuracy: 327.0000	Loss: 424.195063
+------------------
+2021-03-28 10:25:26,634 - #### End epoch 5/1000, elapsed time: 154.56334129720926
+2021-03-28 10:25:26,634 - 
+ --------------------------- epoch 6 ------------------------- 
+
+2021-03-28 10:25:26,634 - weights are [1, 1, 1, 3]
+2021-03-28 10:25:33,035 - 	 15.94524 0.01087
+2021-03-28 10:27:21,701 - 	 18.30230 0.01186
+2021-03-28 10:27:33,827 - 
+ ---------------------- mean loss : 16.58997  ---------------------- 
+
+2021-03-28 10:27:33,827 - Starting Validation
+2021-03-28 10:28:04,747 - 
+                     ------- validation -------            
+
+2021-03-28 10:28:04,747 - 	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+2021-03-28 10:28:04,747 - 	 2.8713  	 0.1473  	 0.0327 	 0.3936
+2021-03-28 10:28:04,747 - -------------------------------
+Validation Epoch: 6 	Accuracy: 401.0000	Loss: 399.263391
+------------------
+2021-03-28 10:28:04,753 - Snapshot saved to /home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim12_out12_lr_0.15_bs128_future_sym-2021-03-28_10_14_59-model_best.pth
+
+2021-03-28 10:28:04,754 - Best model updated in 'dim12_out12_lr_0.15_bs128_future_sym.ini'! !!!!!!!!!
+2021-03-28 10:28:04,758 - Snapshot saved to /home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim12_out12_lr_0.15_bs128_future_sym-2021-03-28_10_14_59-model_best.pth
+
+2021-03-28 10:28:04,758 - model got improved for this run, but did not surpass previous though, please take changes of hyper parameters into consideration
+2021-03-28 10:28:04,758 - #### End epoch 6/1000, elapsed time: 158.12463568989187
+2021-03-28 10:28:04,759 - 
+ --------------------------- epoch 7 ------------------------- 
+
+2021-03-28 10:28:04,759 - weights are [1, 1, 1, 3]

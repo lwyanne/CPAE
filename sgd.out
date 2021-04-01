@@ -1,0 +1,264 @@
+===> use benchmark strategy to split train, validation and eval dataset
+### Model summary below###
+ CPAELSTM44_AT(
+  (lstm1): LSTM(76, 24, batch_first=True)
+  (lstm2): LSTM(24, 24, batch_first=True)
+  (lstm3): LSTM(24, 24, batch_first=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+  (softmax): Softmax(dim=0)
+  (lsoftmax): LogSoftmax()
+  (fcs): Sequential(
+    (0): Linear(in_features=24, out_features=24, bias=True)
+    (1): ReLU(inplace=True)
+    (2): Linear(in_features=24, out_features=24, bias=True)
+  )
+  (lstm4): LSTM(24, 76, batch_first=True)
+  (att1): Linear(in_features=24, out_features=24, bias=True)
+  (att2): Linear(in_features=24, out_features=24, bias=True)
+  (W_pred): Linear(in_features=24, out_features=24, bias=True)
+)
+
+===> Model total parameter: 53400
+
+{'data_split': 'benchmark', 'batch_size': 256, 'mode': 0, 'dim': 24, 'bn': False, 'dropout': 0.3, 'task': 'ihm', 'learning_rate': 0.03, 'epochs': 1000, 'seed': 1, 'log_interval': 2, 'num_workers': 30, 'gru_out': 24, 'sim': 'cosine', 'temperature': 0.07, 'optimizer': 'optim.SGD(filter(lambda p: p.requires_grad,model.parameters()), lr=0.03, momentum=0.9, weight_decay=1e-4)', 'adjust_lr': True, 'setting_name': 'dim24_out24_lr_0.03_bs256_future_sgd_cos_t0.07', 'run_name': 'dim24_out24_lr_0.03_bs256_future_sgd_cos_t0.07-2021-04-01_09_57_55', 'model_type': 'CPAELSTM44_AT', 'resume': False, 'model_best': 'dim12_out12_lr_0.03_bs256_future_sgd_cos_t0.07-2021-04-01_09_50_09-model_best.pth', 'save_every': 100, 'lambda': [1, 1, 1, 3], 'time_step': 30, 'sym': False, 'top_path': '/home/shuying/CPAE/', 'scr_data_path': '/home/shuying/cpcSurvival/data', 'logging_dir': '/home/shuying/CPAE/logs/cpc/CPAELSTM44_AT', 'ini_file': '/home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim24_out24_lr_0.03_bs256_future_sgd_cos_t0.07.ini', 'updated_lr': 0.03, 'pred_mode': 'future', 't_range': (0.5, 0.7)}
+
+ --------------------------- epoch 1 ------------------------- 
+
+weights are [1, 1, 1, 3]
+{'data_split': 'benchmark', 'batch_size': 256, 'mode': 0, 'dim': 24, 'bn': False, 'dropout': 0.3, 'task': 'ihm', 'learning_rate': 0.03, 'epochs': 1000, 'seed': 1, 'log_interval': 2, 'num_workers': 30, 'gru_out': 24, 'sim': 'cosine', 'temperature': 0.07, 'optimizer': 'optim.SGD(filter(lambda p: p.requires_grad,model.parameters()), lr=0.03, momentum=0.9, weight_decay=1e-4)', 'adjust_lr': True, 'setting_name': 'dim12_out12_lr_0.03_bs256_future_sgd_cos_t0.07', 'run_name': 'dim12_out12_lr_0.03_bs256_future_sgd_cos_t0.07-2021-04-01_09_50_09', 'model_type': 'CPAELSTM44_AT', 'resume': False, 'model_best': 'dim12_out12_lr_0.03_bs256_future_sgd_cos_t0.07-2021-04-01_09_50_09-model_best.pth', 'save_every': 100, 'lambda': [1, 1, 1, 3], 'time_step': 30, 'sym': False, 'top_path': '/home/shuying/CPAE/', 'scr_data_path': '/home/shuying/cpcSurvival/data', 'logging_dir': '/home/shuying/CPAE/logs/cpc/CPAELSTM44_AT', 'ini_file': '/home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim12_out12_lr_0.03_bs256_future_sgd_cos_t0.07.ini', 'updated_lr': 0.03, 'pred_mode': 'future', 't_range': (0.5, 0.7)}
+random seed to split dataset is None
+	 28.60678 0.03000
+
+ ---------------------- mean loss : 29.60541  ---------------------- 
+
+Starting Validation
+
+                     ------- validation -------            
+
+	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+	 5.5041  	 0.2176  	 0.0991 	 0.4786
+-------------------------------
+Validation Epoch: 1 	Accuracy: 13.0000	Loss: 375.613674
+------------------
+Snapshot saved to /home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim24_out24_lr_0.03_bs256_future_sgd_cos_t0.07-2021-04-01_09_57_55-model_best.pth
+
+Best model updated in 'dim24_out24_lr_0.03_bs256_future_sgd_cos_t0.07.ini'! !!!!!!!!!
+#### End epoch 1/1000, elapsed time: 102.80745108239353
+
+ --------------------------- epoch 2 ------------------------- 
+
+weights are [1, 1, 1, 3]
+	 28.49128 0.03000
+
+ ---------------------- mean loss : 29.53999  ---------------------- 
+
+Starting Validation
+
+                     ------- validation -------            
+
+	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+	 5.5041  	 0.2117  	 0.0983 	 0.4738
+-------------------------------
+Validation Epoch: 2 	Accuracy: 14.0000	Loss: 375.392002
+------------------
+Snapshot saved to /home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim24_out24_lr_0.03_bs256_future_sgd_cos_t0.07-2021-04-01_09_57_55-model_best.pth
+
+Best model updated in 'dim24_out24_lr_0.03_bs256_future_sgd_cos_t0.07.ini'! !!!!!!!!!
+#### End epoch 2/1000, elapsed time: 123.99597885739058
+
+ --------------------------- epoch 3 ------------------------- 
+
+weights are [1, 1, 1, 3]
+	 28.43263 0.03000
+
+ ---------------------- mean loss : 29.53254  ---------------------- 
+
+Starting Validation
+
+                     ------- validation -------            
+
+	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+	 5.5041  	 0.2094  	 0.0983 	 0.4719
+-------------------------------
+Validation Epoch: 3 	Accuracy: 12.0000	Loss: 375.311367
+------------------
+Snapshot saved to /home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim24_out24_lr_0.03_bs256_future_sgd_cos_t0.07-2021-04-01_09_57_55-model_best.pth
+
+model got improved for this run, but did not surpass previous though, please take changes of hyper parameters into consideration
+#### End epoch 3/1000, elapsed time: 121.79590308573097
+
+ --------------------------- epoch 4 ------------------------- 
+
+weights are [1, 1, 1, 3]
+	 28.66199 0.03000
+
+ ---------------------- mean loss : 29.52618  ---------------------- 
+
+Starting Validation
+
+                     ------- validation -------            
+
+	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+	 5.5041  	 0.2079  	 0.0982 	 0.4705
+-------------------------------
+Validation Epoch: 4 	Accuracy: 14.0000	Loss: 375.255583
+------------------
+#### End epoch 4/1000, elapsed time: 125.53306831140071
+
+ --------------------------- epoch 5 ------------------------- 
+
+weights are [1, 1, 1, 3]
+	 28.45164 0.03000
+
+ ---------------------- mean loss : 29.59666  ---------------------- 
+
+Starting Validation
+
+                     ------- validation -------            
+
+	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+	 5.5041  	 0.2067  	 0.0982 	 0.4685
+-------------------------------
+Validation Epoch: 5 	Accuracy: 13.0000	Loss: 375.184820
+------------------
+Snapshot saved to /home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim24_out24_lr_0.03_bs256_future_sgd_cos_t0.07-2021-04-01_09_57_55-model_best.pth
+
+model got improved for this run, but did not surpass previous though, please take changes of hyper parameters into consideration
+#### End epoch 5/1000, elapsed time: 101.15325467474759
+
+ --------------------------- epoch 6 ------------------------- 
+
+weights are [1, 1, 1, 3]
+	 28.51677 0.03000
+
+ ---------------------- mean loss : 29.51265  ---------------------- 
+
+Starting Validation
+
+                     ------- validation -------            
+
+	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+	 5.5041  	 0.2045  	 0.0982 	 0.4611
+-------------------------------
+Validation Epoch: 6 	Accuracy: 11.0000	Loss: 374.963398
+------------------
+#### End epoch 6/1000, elapsed time: 87.81293163634837
+
+ --------------------------- epoch 7 ------------------------- 
+
+weights are [1, 1, 1, 3]
+	 28.50063 0.03000
+
+ ---------------------- mean loss : 29.46925  ---------------------- 
+
+Starting Validation
+
+                     ------- validation -------            
+
+	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+	 5.5041  	 0.1973  	 0.0985 	 0.4297
+-------------------------------
+Validation Epoch: 7 	Accuracy: 14.0000	Loss: 374.060436
+------------------
+#### End epoch 7/1000, elapsed time: 94.14432767406106
+
+ --------------------------- epoch 8 ------------------------- 
+
+weights are [1, 1, 1, 3]
+	 28.74194 0.03000
+---------------- 
+
+Starting Validation
+
+                     ------- validation -------            
+
+	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+	 5.5041  	 0.1910  	 0.0977 	 0.4060
+-------------------------------
+Validation Epoch: 8 	Accuracy: 15.0000	Loss: 373.344748
+------------------
+#### End epoch 8/1000, elapsed time: 125.7839217344299
+
+ --------------------------- epoch 9 ------------------------- 
+
+weights are [1, 1, 1, 3]
+	 28.33551 0.03000
+
+ ---------------------- mean loss : 29.38003  ---------------------- 
+
+Starting Validation
+
+                     ------- validation -------            
+
+	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+	 5.5041  	 0.1901  	 0.0974 	 0.4037
+-------------------------------
+Validation Epoch: 9 	Accuracy: 14.0000	Loss: 373.265659
+------------------
+#### End epoch 9/1000, elapsed time: 127.42877734079957
+
+ --------------------------- epoch 10 ------------------------- 
+
+weights are [1, 1, 1, 3]
+	 28.27983 0.03000
+
+ ---------------------- mean loss : 29.37460  ---------------------- 
+
+Starting Validation
+
+                     ------- validation -------            
+
+	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+	 5.5041  	 0.1891  	 0.0970 	 0.4015
+-------------------------------
+Validation Epoch: 10 	Accuracy: 17.0000	Loss: 373.185169
+------------------
+Snapshot saved to /home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim12_out12_lr_0.03_bs256_future_sgd_cos_t0.07-2021-04-01_09_50_09-model_best.pth
+
+Best model updated in 'dim12_out12_lr_0.03_bs256_future_sgd_cos_t0.07.ini'! !!!!!!!!!
+#### End epoch 10/1000, elapsed time: 118.13949140906334
+
+ --------------------------- epoch 11 ------------------------- 
+
+weights are [1, 1, 1, 3]
+	 28.30510 0.03000
+
+ ---------------------- mean loss : 29.36984  ---------------------- 
+
+Starting Validation
+
+                     ------- validation -------            
+
+	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+	 5.5041  	 0.1879  	 0.0965 	 0.3995
+-------------------------------
+Validation Epoch: 11 	Accuracy: 14.0000	Loss: 373.101728
+------------------
+#### End epoch 11/1000, elapsed time: 89.90965931117535
+
+ --------------------------- epoch 12 ------------------------- 
+
+weights are [1, 1, 1, 3]
+	 28.43499 0.03000
+
+ ---------------------- mean loss : 29.36393  ---------------------- 
+
+Starting Validation
+
+                     ------- validation -------            
+
+	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+	 5.5041  	 0.1860  	 0.0957 	 0.3967
+-------------------------------
+Validation Epoch: 12 	Accuracy: 14.0000	Loss: 372.984623
+------------------
+#### End epoch 12/1000, elapsed time: 94.69571001268923
+
+ --------------------------- epoch 13 ------------------------- 
+
+weights are [1, 1, 1, 3]
+	 28.28220 0.03000
+
+ ---------------------- mean loss : 29.36049  ---------------------- 
+
+Starting Validation

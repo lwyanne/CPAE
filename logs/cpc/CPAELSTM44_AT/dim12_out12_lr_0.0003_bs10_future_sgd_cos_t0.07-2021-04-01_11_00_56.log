@@ -1,0 +1,28 @@
+2021-04-01 11:00:56,887 - ===> use benchmark strategy to split train, validation and eval dataset
+2021-04-01 11:00:58,190 - ### Model summary below###
+ CPAELSTM44_AT(
+  (lstm1): LSTM(76, 12, batch_first=True)
+  (lstm2): LSTM(12, 12, batch_first=True)
+  (lstm3): LSTM(12, 12, batch_first=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+  (softmax): Softmax(dim=0)
+  (lsoftmax): LogSoftmax()
+  (fcs): Sequential(
+    (0): Linear(in_features=12, out_features=12, bias=True)
+    (1): ReLU(inplace=True)
+    (2): Linear(in_features=12, out_features=12, bias=True)
+  )
+  (lstm4): LSTM(12, 76, batch_first=True)
+  (att1): Linear(in_features=12, out_features=12, bias=True)
+  (att2): Linear(in_features=12, out_features=12, bias=True)
+  (W_pred): Linear(in_features=12, out_features=12, bias=True)
+)
+
+2021-04-01 11:00:58,190 - ===> Model total parameter: 34956
+
+2021-04-01 11:00:58,190 - {'data_split': 'benchmark', 'batch_size': 10, 'mode': 0, 'dim': 12, 'bn': False, 'dropout': 0.3, 'task': 'ihm', 'learning_rate': 0.0003, 'epochs': 1000, 'seed': 1, 'log_interval': 5, 'num_workers': 1, 'gru_out': 12, 'sim': 'cosine', 'temperature': 0.07, 'optimizer': 'optim.SGD(filter(lambda p: p.requires_grad,model.parameters()), lr=0.0003, momentum=0.9, weight_decay=1e-4)', 'adjust_lr': True, 'setting_name': 'dim12_out12_lr_0.0003_bs10_future_sgd_cos_t0.07', 'run_name': 'dim12_out12_lr_0.0003_bs10_future_sgd_cos_t0.07-2021-04-01_11_00_56', 'model_type': 'CPAELSTM44_AT', 'resume': False, 'model_best': 'dim12_out12_lr_0.0003_bs256_future_sgd_cos_t0.07-2021-04-01_10_16_10-model_best.pth', 'save_every': None, 'lambda': [1, 1, 1, 3], 'time_step': 30, 'sym': False, 'top_path': '/home/shuying/CPAE/', 'scr_data_path': '/home/shuying/cpcSurvival/data', 'logging_dir': '/home/shuying/CPAE/logs/cpc/CPAELSTM44_AT', 'ini_file': '/home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim12_out12_lr_0.0003_bs10_future_sgd_cos_t0.07.ini', 'updated_lr': 0.0003, 'pred_mode': 'future', 't_range': (0.5, 0.7)}
+2021-04-01 11:00:58,190 - 
+ --------------------------- epoch 1 ------------------------- 
+
+2021-04-01 11:00:58,190 - weights are [1, 1, 1, 3]
+2021-04-01 11:00:58,495 - 	 12.30996 0.00030

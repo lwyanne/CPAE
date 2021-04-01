@@ -59,6 +59,9 @@ def cpc_main(Model, args_json):
     best_epoch = previous_epoch
     current_acc=0
     for epoch in range(previous_epoch, args_json['epochs'] + 1):
+        if args_json.get('adjust_lr'):
+            args_json['updated_lr']=adjust_learning_rate(args_json,optimizer, epoch)
+        else: args_json['updated_lr']=args_json['learning_rate']
         epoch_timer = timer()
 
         train(args_json, model, device, train_loader, optimizer, epoch, args_json['batch_size'],
@@ -96,13 +99,15 @@ def cpc_main(Model, args_json):
             write_config(args_json, os.path.join(logging_dir, setting_name + '.ini'))
             logger.info("Best model updated in '%s.ini'! !!!!!!!!" % args_json['setting_name'])
             best_epoch = epoch + 1
+            
         elif epoch - best_epoch > 2:
-            optimizer.increase_delta()
+            if args_json['learning_rate'] is None:
+                optimizer.increase_delta()
             best_epoch = epoch + 1
 
 
 
-        if 'CP' in args_json['model_type'] and val_acc > current_acc:
+        if 'CP' in args_json['model_type'] and val_acc > current_acc and val_acc < best_acc:
             current_acc = max(val_acc, current_acc)
             snapshot(args_json['logging_dir'], run_name, {
                 'epoch': epoch + 1,
@@ -129,6 +134,9 @@ def cpc_main(Model, args_json):
         logger.info(
             "#### End epoch {}/{}, elapsed time: {}".format(epoch, args_json['epochs'], end_epoch_timer - epoch_timer))
 
+
+
+        
     ## end 
     end_global_timer = timer()
     logger.info("################## Success #########################")

@@ -3,7 +3,8 @@ from __future__ import print_function
 import inspect
 import os, sys
 import logging
-
+top_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+sys.path.append(top_path)
 # add the top-level directory of this project to sys.path so that we can import modules without error
 from models.loss import Chimera_loss, record_loss , mask_where,mapping_where , mask_mapping_M
 
@@ -2587,9 +2588,10 @@ def train(args, model, device, train_loader, optimizer, epoch, batch_size, lr=No
             loss.backward()
             optimizer.step()
 
-            if lr is None:
+            if lr is None or args['learning_rate'] is None:
                 lr = optimizer.update_learning_rate()  # See optimizer.py
                 # print(lr)
+            else: lr=args['updated_lr']
             if batch_idx % args['log_interval'] == 0:
                 logger.info('Train Epoch: {} [{}/{} ({:.0f}%)]\tlr:{:.5f}\tAccuracy: {:.4f}\tLoss: {:.6f}'.format(
                     epoch, batch_idx * len(data), len(train_loader.dataset),
@@ -2631,9 +2633,13 @@ def train(args, model, device, train_loader, optimizer, epoch, batch_size, lr=No
 
             local_loss.append(loss.item())
 
-            if ii % 100 == 0:  # verbose
-                new_lr = optimizer.update_learning_rate()
-                logger.info('\t {:.5f} {:.5f}'.format(loss.item(), new_lr))
+            if ii % 100 == 0:  
+                if args['learning_rate'] is None:# verbose
+                    lr = optimizer.update_learning_rate()
+                else:
+                    lr=args['updated_lr']
+
+                logger.info('\t {:.5f} {:.5f}'.format(loss.item(), lr))
             del X, y, batch, D, nce, accuracy, loss, ii
             torch.cuda.empty_cache()
 
@@ -2707,6 +2713,20 @@ def validation(model, args, device, validation_loader):
 
         return total_acc, total_loss
 
+
+def adjust_learning_rate(args,optimizer, epoch):
+    """Sets the learning rate to the initial LR decayed by 10 every 100 epochs"""
+    lr = args['learning_rate']
+    if epoch < 300:
+        lr =args['learning_rate']
+    elif epoch >= 300 and epoch < 500:
+        lr = args['learning_rate'] * 0.1
+    else:
+        lr = args['learning_rate'] * 0.01
+    #lr = args.lr * (0.1 ** (epoch // 100))
+    for param_group in optimizer.param_groups:
+        param_group['lr'] = lr
+    return lr
 
 def define_model(args_json, Model, train_loader):
     model_args = filter_args(args_json, Model)

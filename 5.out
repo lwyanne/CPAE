@@ -1,0 +1,45 @@
+===> use benchmark strategy to split train, validation and eval dataset
+### Model summary below###
+ CPAELSTM44_AT(
+  (lstm1): LSTM(76, 12, batch_first=True)
+  (lstm2): LSTM(12, 12, batch_first=True)
+  (lstm3): LSTM(12, 12, batch_first=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+  (softmax): Softmax(dim=0)
+  (lsoftmax): LogSoftmax()
+  (fcs): Sequential(
+    (0): Linear(in_features=12, out_features=12, bias=True)
+    (1): ReLU(inplace=True)
+    (2): Linear(in_features=12, out_features=12, bias=True)
+  )
+  (lstm4): LSTM(12, 76, batch_first=True)
+  (att1): Linear(in_features=12, out_features=12, bias=True)
+  (att2): Linear(in_features=12, out_features=12, bias=True)
+  (W_pred): Linear(in_features=12, out_features=12, bias=True)
+)
+
+===> Model total parameter: 34956
+
+{'data_split': 'benchmark', 'batch_size': 128, 'mode': 0, 'dim': 12, 'bn': False, 'dropout': 0.3, 'task': 'ihm', 'learning_rate': 0.15, 'epochs': 1000, 'seed': 1, 'log_interval': 30, 'num_workers': 30, 'gru_out': 12, 'optimizer': 'ScheduledOptim(optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), betas=(0.9, 0.98), eps=1e-09, weight_decay=1e-4, amsgrad=True),n_warmup_steps=20)', 'setting_name': 'dim12_out12_lr_0.15_bs128_future_sym_flat', 'run_name': 'dim12_out12_lr_0.15_bs128_future_sym_flat-2021-03-28_11_15_17', 'model_type': 'CPAELSTM44_AT', 'resume': False, 'model_best': 'dim12_out12_lr_0.15_bs128_future_sym_flat-2021-03-28_10_22_01-model_best.pth', 'save_every': 100, 'lambda': [1, 1, 1, 3], 'time_step': 5, 'sym': True, 'flat_attention': True, 'top_path': '/home/shuying/CPAE/', 'scr_data_path': '/home/shuying/cpcSurvival/data', 'logging_dir': '/home/shuying/CPAE/logs/cpc/CPAELSTM44_AT', 'ini_file': '/home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim12_out12_lr_0.15_bs128_future_sym_flat.ini', 'pred_mode': 'future', 't_range': (0.5, 0.7)}
+
+ --------------------------- epoch 1 ------------------------- 
+
+weights are [1, 1, 1, 3]
+{'data_split': 'benchmark', 'batch_size': 128, 'mode': 0, 'dim': 12, 'bn': False, 'dropout': 0.3, 'task': 'ihm', 'learning_rate': 0.15, 'epochs': 1000, 'seed': 1, 'log_interval': 30, 'num_workers': 30, 'gru_out': 12, 'optimizer': 'ScheduledOptim(optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), betas=(0.9, 0.98), eps=1e-09, weight_decay=1e-4, amsgrad=True),n_warmup_steps=20)', 'setting_name': 'dim12_out12_lr_0.15_bs128_future_sym_flat', 'run_name': 'dim12_out12_lr_0.15_bs128_future_sym_flat-2021-03-28_10_22_01', 'model_type': 'CPAELSTM44_AT', 'resume': False, 'model_best': 'dim12_out12_lr_0.15_bs128_future_sym_flat-2021-03-28_10_22_01-model_best.pth', 'save_every': 100, 'lambda': [1, 1, 1, 3], 'time_step': 5, 'sym': True, 'flat_attention': True, 'top_path': '/home/shuying/CPAE/', 'scr_data_path': '/home/shuying/cpcSurvival/data', 'logging_dir': '/home/shuying/CPAE/logs/cpc/CPAELSTM44_AT', 'ini_file': '/home/shuying/CPAE/logs/cpc/CPAELSTM44_AT/dim12_out12_lr_0.15_bs128_future_sym_flat.ini', 'pred_mode': 'future', 't_range': (0.5, 0.7)}
+random seed to split dataset is None
+Traceback (most recent call last):
+  File "scripts/main_pretrain.py", line 41, in <module>
+    cpc_main(model, args_json)
+  File "/home/shuying/CPAE/models/benchmark.py", line 65, in cpc_main
+    args_json['learning_rate'])
+  File "/home/shuying/CPAE/models/networks.py", line 2621, in train
+    D, nce, accuracy = model(X)  # decoded
+  File "/home/shuying/anaconda3/lib/python3.7/site-packages/torch/nn/modules/module.py", line 550, in __call__
+    result = self.forward(*input, **kwargs)
+  File "/home/shuying/CPAE/models/networkSwitch.py", line 2623, in forward
+    x_hat, nce, acc = self.pred_future(x)
+  File "/home/shuying/CPAE/models/networkSwitch.py", line 2583, in pred_future
+    latent_past, _, hidden_reg_out_past, _ = self.encodeRegress(x[:, :t + 1, :])
+  File "/home/shuying/CPAE/models/networkSwitch.py", line 2520, in encodeRegress
+    latents_to_pred = torch.mul(latents, self.cal_att1(latents))
+TypeError: cal_att1() takes 1 positional argument but 2 were given

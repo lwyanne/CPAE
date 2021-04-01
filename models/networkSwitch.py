@@ -2262,6 +2262,7 @@ class CPAELSTM43(CPLSTM4H):
             bidirectional=False,
             batch_first=True)
 
+
     def compute_nce(self, encode_samples, pred):
         '''
         -----------------------------------------------------------------------------------
@@ -2288,6 +2289,7 @@ class CPAELSTM43(CPLSTM4H):
 
         return nce, accuracy
 
+
     def encode(self, x):
         bs = x.shape[0]
         x = self.dropout(x)
@@ -2295,12 +2297,14 @@ class CPAELSTM43(CPLSTM4H):
         x, _ = self.lstm1(x, (h0, c0))
         return x
 
+
     def decode(self, x):
         bs = x.shape[0]
         x = self.dropout(x)
         (h0, c0) = self.init_hidden(bs, self.input_dim)
         x, _ = self.lstm4(x, (h0, c0))
         return x
+
 
     def forward(self, x):
         if len(x.shape) == 4: x = x.squeeze(1)
@@ -2327,11 +2331,12 @@ class CPAELSTM43(CPLSTM4H):
 class CPAELSTM44(CPLSTM4):
     """
     add decoder constraint in loss function
+    sim: similarity function. 'dot' for dot product, 'cosine' for cosine similarity
     """
 
     def __init__(self, dim, bn, dropout, task,
                  depth=2, num_classes=1,
-                 input_dim=76, time_step=5, mode=1):
+                 input_dim=76, time_step=5, t_range=None,mode=1,sym=False, sim='dot',temperature=1,pred_mode='step'):
         super(CPAELSTM44, self).__init__(dim, bn, dropout, task,
                                          depth, num_classes,
                                          input_dim, time_step, mode)
@@ -2341,6 +2346,26 @@ class CPAELSTM44(CPLSTM4):
             hidden_size=self.input_dim,
             bidirectional=False,
             batch_first=True)
+        self.sym=sym
+        self.sim=sim 
+        self.temperature=temperature
+        self.t_range=t_range
+        self.pred_mode = pred_mode
+        if self.pred_mode=='future':
+            self.W_pred = nn.Linear(self.dim, self.dim)
+
+    def sim_func(self,a,b):
+        if self.sim=='cosine':
+            print('use cosine')
+            a=a/a.norm(dim=-1,keepdim=True)
+            b=b/b.norm(dim=-1,keepdim=True)
+            a=self.temperature*a
+            b=self.temperature*b
+            return torch.mm(a,b.T)
+        elif self.sim=='dot':
+            print('use dot')
+            return torch.mm(a,b.T)
+            
 
     def compute_nce(self, encode_samples, pred):
         '''
@@ -2355,14 +2380,18 @@ class CPAELSTM44(CPLSTM4):
         self.batch_size = self.bs
         for i in np.arange(0, self.time_step):
             try:
-                total = torch.mm(encode_samples[i], torch.transpose(pred[i], 0, 1))  # e.g. size 8*8
+                total = self.sim_func(encode_samples[i], pred[i])  # e.g. size 8*8
             except IndexError:
                 print('i is : %s,latent shape: %s, pred shape: %s ' % (i, encode_samples.shape, pred.shape))
                 raise AssertionError
             # print(total)
             correct = torch.sum(torch.eq(torch.argmax(self.softmax(total), dim=0),
                                          torch.arange(0, self.batch_size).cuda()))  # correct is a tensor
-            nce += torch.sum(torch.diag(self.lsoftmax(total)))  # nce is a tensor
+            if self.sym:
+                nce += 1/2*(torch.sum(torch.diag((nn.LogSoftmax(dim=0)(total)))) + torch.sum(torch.diag((nn.LogSoftmax(dim=1)(total)))))# nce is a tensor
+
+            else:
+                nce += torch.sum(torch.diag(self.lsoftmax(total))) 
         nce /= -1. * self.batch_size * self.time_step
         accuracy = 1. * correct.item() / self.batch_size
 
@@ -2410,6 +2439,34 @@ class CPAELSTM44(CPLSTM4):
 
         return x_hat, nce, acc
 
+        def pred_future(self, x):
+            x=self.check_input(x)
+
+            # print(self.t_range)
+            # print(self.max_len)
+            t_range=(self.max_len*self.t_range[0],self.max_len*self.t_range[1])
+            # print(t_range)
+            # t_range = (self.max_len *2// 3, 4 * self.max_len // 5)
+            # print(x.shape)
+            x_ori = x
+            if self.max_len>192: t=192
+            else:
+                t = torch.randint(low=int(t_range[0]), high=int(t_range[1]), size=(1,)).long()  # choose a point to split the time series
+            # print('t is %s'%t)
+            # self.bs = x.shape[0]
+            latent_past, _, hidden_reg_out_past, _ = self.encodeRegress(x[:, :t + 1, :])
+            latent_future, _, hidden_reg_out_future, _ = self.encodeRegress(x[:, t + 1:self.max_len, :])
+            del x
+            hidden_reg_out_pred = self.fcs(self.W_pred(hidden_reg_out_past))
+
+            latent_all = torch.cat((latent_past, latent_future), 1)
+            del latent_future,latent_past
+            latent_all_attention = torch.mul(latent_all, self.cal_att2(latent_all))
+            del latent_all
+            x_hat = self.decode(latent_all_attention)
+            nce, acc = self.compute_nce(self.fcs(hidden_reg_out_future), hidden_reg_out_pred)
+            return x_hat, nce, acc
+
 
 
 class CPAELSTM44_AT(CPLSTM4):
@@ -2421,7 +2478,7 @@ class CPAELSTM44_AT(CPLSTM4):
 
     def __init__(self, dim, bn, dropout, task,t_range=None,
                  depth=2, num_classes=1,
-                 input_dim=76, time_step=5, mode=1, switch=True, pred_mode='step'):
+                 input_dim=76, flat_attention=False,time_step=5, sim='dot',temperature=1,mode=1, switch=True, pred_mode='step',sym=False):
 
         super(CPAELSTM44_AT, self).__init__(dim, bn, dropout, task,
                                             depth, num_classes,
@@ -2434,10 +2491,52 @@ class CPAELSTM44_AT(CPLSTM4):
             batch_first=True)
         self.att1 = nn.Linear(self.dim, self.dim)
         self.att2 = nn.Linear(self.dim, self.dim)
+        self.flat_attention=flat_attention
+        self.sim=sim 
+        self.temperature=temperature
         self.t_range=t_range
         self.pred_mode = pred_mode
         if self.pred_mode=='future':
             self.W_pred = nn.Linear(self.dim, self.dim)
+        self.sym=sym #whether use symmetric loss
+
+    def cal_att1(self,x):
+        if self.flat_attention:
+            x=self.att1(x)
+            assert x.shape[-1]==self.dim
+            # x=torch.transpose(x,1,2)
+            # torch.nn.BatchNorm1d(self.dim)
+            # x=torch.transpose(x,1,2)
+            nn.Softmax(dim=-1)
+        else:
+            x=self.att1(x)
+        return x
+
+    def cal_att2(self,x):
+        if self.flat_attention:
+            x=self.att2(x)
+            # x=torch.transpose(x,1,2)
+            # torch.nn.BatchNorm1d(self.dim)
+            # x=torch.transpose(x,1,2)
+            nn.Softmax(dim=-1)
+        else:
+            x=self.att2(x)
+        return x
+
+    
+    def sim_func(self,a,b):
+        if self.sim=='cosine':
+            a=a/a.norm(dim=-1,keepdim=True)
+            b=b/b.norm(dim=-1,keepdim=True)
+            a=self.temperature*a
+            b=self.temperature*b
+            print('using cosine')
+
+            return torch.mm(a,b.T)
+        elif self.sim=='dot':
+            print('using dot')
+
+            return torch.mm(a,b.T)
 
     def compute_nce(self, encode_samples, pred):
         '''
@@ -2453,21 +2552,35 @@ class CPAELSTM44_AT(CPLSTM4):
         if self.pred_mode=='step':
             for i in np.arange(0, self.time_step):
                 try:
-                    total = torch.mm(encode_samples[i], torch.transpose(pred[i], 0, 1))  # e.g. size 8*8
+                    print('self.sim is ',self.sim)
+                    total = self.sim_func(encode_samples[i], pred[i])  # e.g. size 8*8
                 except IndexError:
                     print('i is : %s,latent shape: %s, pred shape: %s ' % (i, encode_samples.shape, pred.shape))
                     raise AssertionError
                 # print(total)
-                correct = torch.sum(torch.eq(torch.argmax(self.softmax(total), dim=0),
-                                             torch.arange(0, self.batch_size).cuda()))  # correct is a tensor
-                nce += torch.sum(torch.diag(self.lsoftmax(total)))  # nce is a tensor
+                
+                if self.sym:
+                    nce += 1/2*(torch.sum(torch.diag((nn.LogSoftmax(dim=0)(total)))) + torch.sum(torch.diag((nn.LogSoftmax(dim=1)(total)))))# nce is a tensor
+
+                else:
+                    nce += torch.sum(torch.diag(self.lsoftmax(total)))  # nce is a tensor
             nce /= -1. * self.batch_size * self.time_step
             accuracy = 1. * correct.item() / self.batch_size
+
         elif self.pred_mode=='future':
-            total=torch.mm(encode_samples[0],torch.transpose(pred[0], 0, 1))
+            total=self.sim_func(encode_samples[0],pred[0])
             correct = torch.sum(torch.eq(torch.argmax(self.softmax(total), dim=0),
                                          torch.arange(0, self.batch_size).cuda()))  # correct is a tensor
-            nce = torch.sum(torch.diag(self.lsoftmax(total)))  # nce is a tensor
+            # correct = torch.sum(torch.eq(torch.argmax(self.softmax(total), dim=0),
+            #                                  torch.arange(0, self.batch_size).cuda()))  # correct is a tensor
+            # correct_2=torch.sum(torch.eq(torch.argmax(self.softmax(total), dim=1),
+            #                                  torch.arange(0, self.batch_size).cuda())) 
+            # print(correct,correct_2)                             
+            # print(total)
+            if self.sym:
+                nce += 1/2*(torch.sum(torch.diag((nn.LogSoftmax(dim=0)(total)))) + torch.sum(torch.diag((nn.LogSoftmax(dim=1)(total)))))# nce is a tensor
+            else:
+                nce += torch.sum(torch.diag(self.lsoftmax(total)))   # nce is a tensor
             nce /= -1. * self.batch_size
             accuracy =1. * correct.item() / self.batch_size
         return nce, accuracy
@@ -2475,9 +2588,10 @@ class CPAELSTM44_AT(CPLSTM4):
     def encodeRegress(self, x, warm=False, conti=False):
         bs = x.shape[0]
         x = self.dropout(x)
+        # print(x.shape)
         latents, state1 = self.lstm1(x)
         del x
-        latents_to_pred = torch.mul(latents, self.att1(latents))
+        latents_to_pred = torch.mul(latents, self.cal_att1(latents))
         regs, state2 = self.lstm2(latents_to_pred)
         del latents_to_pred
         ht, ct = state2
@@ -2527,6 +2641,7 @@ class CPAELSTM44_AT(CPLSTM4):
 
     def pred_future(self, x):
         x=self.check_input(x)
+
         # print(self.t_range)
         # print(self.max_len)
         t_range=(self.max_len*self.t_range[0],self.max_len*self.t_range[1])
@@ -2546,7 +2661,7 @@ class CPAELSTM44_AT(CPLSTM4):
 
         latent_all = torch.cat((latent_past, latent_future), 1)
         del latent_future,latent_past
-        latent_all_attention = torch.mul(latent_all, self.att2(latent_all))
+        latent_all_attention = torch.mul(latent_all, self.cal_att2(latent_all))
         del latent_all
         x_hat = self.decode(latent_all_attention)
         nce, acc = self.compute_nce(self.fcs(hidden_reg_out_future), hidden_reg_out_pred)
@@ -2569,7 +2684,9 @@ class CPAELSTM44_AT(CPLSTM4):
         latent_future = torch.stack(latent_future, 0)
 
         latent_all = torch.cat((latent_past, latent_future.transpose(0, 1)), 1)
-        latent_all_attention = torch.mul(latent_all, self.att2(latent_all))
+
+        latent_all_attention = torch.mul(latent_all, self.cal_att2(latent_all))
+    
         x_hat = self.decode(latent_all_attention)
         nce, acc = self.compute_nce(latent_future, latent_preds)
 
