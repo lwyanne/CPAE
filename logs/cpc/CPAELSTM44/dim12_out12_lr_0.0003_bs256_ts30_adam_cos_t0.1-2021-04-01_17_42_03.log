@@ -1,0 +1,64 @@
+2021-04-01 17:42:03,883 - ===> use benchmark strategy to split train, validation and eval dataset
+2021-04-01 17:42:05,553 - ### Model summary below###
+ CPAELSTM44(
+  (lstm1): LSTM(76, 12, batch_first=True)
+  (lstm2): LSTM(12, 12, batch_first=True)
+  (lstm3): LSTM(12, 12, batch_first=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+  (softmax): Softmax(dim=0)
+  (lsoftmax): LogSoftmax()
+  (fcs): Sequential(
+    (0): Linear(in_features=12, out_features=12, bias=True)
+    (1): ReLU(inplace=True)
+    (2): Linear(in_features=12, out_features=12, bias=True)
+  )
+  (lstm4): LSTM(12, 76, batch_first=True)
+)
+
+2021-04-01 17:42:05,553 - ===> Model total parameter: 34488
+
+2021-04-01 17:42:05,553 - {'data_split': 'benchmark', 'batch_size': 256, 'mode': 0, 'dim': 12, 'bn': False, 'dropout': 0.3, 'task': 'ihm', 'learning_rate': 0.0003, 'epochs': 1000, 'seed': 1, 'log_interval': 5, 'num_workers': 30, 'gru_out': 12, 'sim': 'cosine', 'temperature': 0.1, 'optimizer': 'optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=0.0003, betas=(0.9, 0.98), eps=1e-09,weight_decay=1e-4)', 'adjust_lr': True, 'setting_name': 'dim12_out12_lr_0.0003_bs256_ts30_adam_cos_t0.1', 'run_name': 'dim12_out12_lr_0.0003_bs256_ts30_adam_cos_t0.1-2021-04-01_17_42_03', 'model_type': 'CPAELSTM44', 'resume': False, 'model_best': 'dim12_out12_lr_0.0003_bs256_ts30_adam_cos_t0.07-2021-04-01_11_08_29-model_best.pth', 'save_every': 100, 'lambda': [1, 1, 1, 3], 'time_step': 30, 'sym': False, 'top_path': '/home/shuying/CPAE/', 'scr_data_path': '/home/shuying/cpcSurvival/data', 'logging_dir': '/home/shuying/CPAE/logs/cpc/CPAELSTM44', 'ini_file': '/home/shuying/CPAE/logs/cpc/CPAELSTM44/dim12_out12_lr_0.0003_bs256_ts30_adam_cos_t0.1.ini', 'updated_lr': 0.0003}
+2021-04-01 17:42:05,553 - 
+ --------------------------- epoch 1 ------------------------- 
+
+2021-04-01 17:42:05,554 - weights are [1, 1, 1, 3]
+2021-04-01 17:42:40,695 - 	 28.60830 0.00030
+2021-04-01 17:45:48,608 - 
+ ---------------------- mean loss : 29.89460  ---------------------- 
+
+2021-04-01 17:45:48,610 - Starting Validation
+2021-04-01 17:46:11,944 - 
+                     ------- validation -------            
+
+2021-04-01 17:46:11,945 - 	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+2021-04-01 17:46:11,945 - 	 5.5041  	 0.2863  	 0.1118 	 0.7127
+2021-04-01 17:46:11,945 - -------------------------------
+Validation Epoch: 1 	Accuracy: 13.0000	Loss: 382.924519
+------------------
+2021-04-01 17:46:11,949 - Snapshot saved to /home/shuying/CPAE/logs/cpc/CPAELSTM44/dim12_out12_lr_0.0003_bs256_ts30_adam_cos_t0.1-2021-04-01_17_42_03-model_best.pth
+
+2021-04-01 17:46:11,950 - Best model updated in 'dim12_out12_lr_0.0003_bs256_ts30_adam_cos_t0.1.ini'! !!!!!!!!!
+2021-04-01 17:46:11,950 - #### End epoch 1/1000, elapsed time: 246.39630766306072
+2021-04-01 17:46:11,950 - 
+ --------------------------- epoch 2 ------------------------- 
+
+2021-04-01 17:46:11,950 - weights are [1, 1, 1, 3]
+2021-04-01 17:46:44,761 - 	 28.53244 0.00030
+2021-04-01 17:49:53,651 - 
+ ---------------------- mean loss : 29.77855  ---------------------- 
+
+2021-04-01 17:49:53,652 - Starting Validation
+2021-04-01 17:50:15,863 - 
+                     ------- validation -------            
+
+2021-04-01 17:50:15,867 - 	 NCE 	 MSE 	 MASK MSE 	 MAPPING MSE
+2021-04-01 17:50:15,871 - 	 5.5041  	 0.2458  	 0.1052 	 0.5897
+2021-04-01 17:50:15,874 - -------------------------------
+Validation Epoch: 2 	Accuracy: 13.0000	Loss: 379.026493
+------------------
+2021-04-01 17:50:15,874 - #### End epoch 2/1000, elapsed time: 243.92447981610894
+2021-04-01 17:50:15,880 - 
+ --------------------------- epoch 3 ------------------------- 
+
+2021-04-01 17:50:15,883 - weights are [1, 1, 1, 3]
+2021-04-01 17:50:48,775 - 	 28.45921 0.00030
