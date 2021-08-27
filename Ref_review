@@ -1,0 +1,52 @@
+# References for rebuttal
+## Mortality prediction related articles searched in Nature.com
+
+Peng, JC., Wu, T., Wu, X. et al. **Development of mortality prediction model in the elderly hospitalized AKI patients.** Sci Rep 11, 15157 (2021). [https://doi.org/10.1038/s41598-021-94271-9](https://doi.org/10.1038/s41598-021-94271-9)
+
+Lee, W., Lee, J., Woo, SI. et al. **Machine learning enhances the performance of short and long-term mortality prediction model in non-ST-segment elevation myocardial infarction.** Sci Rep 11, 12886 (2021). [https://doi.org/10.1038/s41598-021-92362-1](https://doi.org/10.1038/s41598-021-92362-1)
+
+Yan, L., Zhang, HT., Goncalves, J. et al. **An interpretable mortality prediction model for COVID-19 patients**. Nat Mach Intell 2, 283–288 (2020). [https://doi.org/10.1038/s42256-020-0180-7](https://doi.org/10.1038/s42256-020-0180-7)
+
+Gao, Y., Cai, GY., Fang, W. et al. **Machine learning based early warning system enables accurate mortality risk prediction for COVID-19**. Nat Commun 11, 5033 (2020). [https://doi.org/10.1038/s41467-020-18684-2](https://doi.org/10.1038/s41467-020-18684-2)
+
+Kar, S., Chawla, R., Haranath, S.P. et al. **Multivariable mortality risk prediction using machine learning for COVID-19 patients at admission (AICOVID)**. Sci Rep 11, 12801 (2021). [https://doi.org/10.1038/s41598-021-92146-7](https://doi.org/10.1038/s41598-021-92146-7)
+
+**Schwab, P., Mehrjou, A., Parbhoo, S. et al. Real-time prediction of COVID-19 related mortality using electronic health records.** Nat Commun 12, 1058 (2021). [https://doi.org/10.1038/s41467-020-20816-7](https://doi.org/10.1038/s41467-020-20816-7)
+
+Schwab, P., Mehrjou, A., Parbhoo, S. et al. **Real-time prediction of COVID-19 related mortality using electronic health records.** Nat Commun 12, 1058 (2021). [https://doi.org/10.1038/s41467-020-20816-7](https://doi.org/10.1038/s41467-020-20816-7)
+
+Lee, J., Cai, J., Li, F. et al. **Predicting mortality risk for preterm infants using random forest**. Sci Rep 11, 7308 (2021). [https://doi.org/10.1038/s41598-021-86748-4](https://doi.org/10.1038/s41598-021-86748-4)
+
+Rajkomar, A., Oren, E., Chen, K. et al. **Scalable and accurate deep learning with electronic health records**. npj Digital Med 1, 18 (2018). [https://doi.org/10.1038/s41746-018-0029-1](https://doi.org/10.1038/s41746-018-0029-1)
+
+# Mortality prediction related articles searched in The Lancet
+
+Shang Y, Liu T, Wei Y, et al. **Scoring systems for predicting mortality for severe patients with COVID-19**[J]. EClinicalMedicine, 2020, 24: 100426.
+
+Thorsen-Meyer, Hans-Christian, et al. "**Dynamic and explainable machine learning prediction of mortality in patients in the intensive care unit: a retrospective study of high-frequency data in electronic patient records."** The Lancet Digital Health 2.4 (2020): e179-e191.
+
+Medvedev M M, Brotherton H, Gai A, et al. **Development and validation of a simplified score to predict neonatal mortality risk among neonates weighing 2000 g or less (NMR-2000): an analysis using data from the UK and The Gambia**[J]. The Lancet Child & Adolescent Health, 2020, 4(4): 299-311.
+
+Pirracchio R, Petersen M L, Carone M, et al. **Mortality prediction in intensive care units with the Super ICU Learner Algorithm (SICULA): a population-based study**[J]. The Lancet Respiratory Medicine, 2015, 3(1): 42-52.
+
+# Mortality prediction, length-of-stay prediction in top AI conferences
+
+Song H, Rajan D, Thiagarajan J J, et al. **Attend and diagnose: Clinical time series analysis using attention models**[C]//Thirty-second AAAI conference on artificial intelligence. 2018.
+
+Xu Y, Biswal S, Deshpande S R, et al. **Raim: Recurrent attentive and intensive model of multimodal patient monitoring data**[C]//Proceedings of the 24th ACM SIGKDD international conference on Knowledge Discovery & Data Mining. 2018: 2565-2573.
+
+Choi E, Bahadori M T, Song L, et al. **GRAM: graph-based attention model for healthcare representation learning**[C]//Proceedings of the 23rd ACM SIGKDD international conference on knowledge discovery and data mining. 2017: 787-795.
+
+Sha Y, Wang M D. **Interpretable predictions of clinical outcomes with an attention-based recurrent neural network**[C]//Proceedings of the 8th ACM International Conference on Bioinformatics, Computational Biology, and Health Informatics. 2017: 233-240.
+
+Suresh H, Gong J J, Guttag J V. **Learning tasks for multitask learning: Heterogenous patient populations in the icu**[C]//Proceedings of the 24th ACM SIGKDD International Conference on Knowledge Discovery & Data Mining. 2018: 802-810.
+
+Liu L, Shen J, Zhang M, et al. **Learning the joint representation of heterogeneous temporal events for clinical endpoint prediction**[C]//Proceedings of the AAAI Conference on Artificial Intelligence. 2018, 32(1).
+
+Ma L, Zhang C, Wang Y, et al. **Concare: Personalized clinical feature embedding via capturing the healthcare context**[C]//Proceedings of the AAAI Conference on Artificial Intelligence. 2020, 34(01): 833-840.
+
+Wang S, McDermott M B A, Chauhan G, et al. **Mimic-extract: A data extraction, preprocessing, and representation pipeline for mimic-iii[**C]//Proceedings of the ACM Conference on Health, Inference, and Learning. 2020: 222-235.
+
+**Ma L, Gao J, Wang Y, et al. Adacare: Explainable clinical health status representation learning via scale-adaptive feature extraction and recalibration**[C]//Proceedings of the AAAI Conference on Artificial Intelligence. 2020, 34(01): 825-832.
+
+Tan Q, Ye M, Yang B, et al. **Data-gru: Dual-attention time-aware gated recurrent unit for irregular multivariate time series[C]**//Proceedings of the AAAI Conference on Artificial Intelligence. 2020, 34(01): 930-937.
